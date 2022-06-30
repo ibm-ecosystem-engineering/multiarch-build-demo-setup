@@ -58,9 +58,9 @@ module "clusters-setup" {
   power-cluster-token = var.power-cluster-token
   z-cluster-token     = var.z-cluster-token
 
-  registry-user   = var.registry-user
-  registry-token  = var.registry-token
-} 
+  registry-user  = var.registry-user
+  registry-token = var.registry-token
+}
 
 resource "null_resource" "igc-gitops-dev-cluster" {
   depends_on = [
@@ -73,13 +73,10 @@ resource "null_resource" "igc-gitops-dev-cluster" {
 
 module "multiarch-pipelines" {
   depends_on = [
-    # module.dev-cluster,
     module.clusters-setup,
   ]
-  source      = "./module/multiarch-pipelines"
-  gitops-repo = github_repository.gitops-repo.html_url
-  # User of the github code repositories
-  # github-user           = "ibm-ecosystem-lab"
+  source                = "./module/multiarch-pipelines"
+  gitops-repo           = github_repository.gitops-repo.html_url
   github-user           = var.github-user
   github-token          = var.github-token
   project-name          = var.project-name
