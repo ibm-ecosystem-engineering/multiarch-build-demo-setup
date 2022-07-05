@@ -71,6 +71,6 @@ This script uses a setup script to configure clusters in order to produce multia
 ## Application architecture
 
 The deployed application will be following this architecture:
-![Multiarch-build-demo-architecture](./media/multiarch-build-workflow.png)
+![Multiarch-build-demo-architecture](./media/hybrid-multicloud-showcase.png)
 
 The services are distributed on all the clusters and can communicate with each other using the Submariner add-on. They are deployed with a GitOps strategy, the GitOps repo is created with the script using the `github-user` and `github-token` variables. ArgoCD will try to deploy the services according to what is listed on the GitOps repo. Services placement can also be altered on ArgoCD, either before the deployment on the Terraform script or after the deployment using the ArgoCD UI/CLI.
