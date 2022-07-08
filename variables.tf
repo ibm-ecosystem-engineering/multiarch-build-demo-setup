@@ -67,6 +67,10 @@ variable "github-token" {
   description = "Github token for creating the GitOps repository, needs to have access to repo deletion in order to delete the repo when destroying the Terraform project. Used also for accessing the Github microservices repositories to create webhooks."
 }
 
+variable "github-org" {
+  description = "Github organization for creating the GitOps repository, could be the same as the github-user."
+}
+
 ### Misc
 variable "smee-client" {
   description = "Smee client url for event listening, head over the smee.io. Your git repos should have webhooks configured for this url. This is only used because the clusters are not accessible without a VPN. The default value is the URL configured for the repositories webhooks. If you're using the default repositories, don't change this."

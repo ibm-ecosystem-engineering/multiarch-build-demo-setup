@@ -12,6 +12,7 @@ terraform {
 
 provider "github" {
   token = var.github-token
+  owner = var.github-org
 }
 
 provider "kubernetes" {
