@@ -19,6 +19,10 @@ This script uses a setup script to configure clusters in order to produce multia
   You can install ArgoCD using the OpenShift operator : Red Hat OpenShift GitOps
   The other clusters will be used as "workload clusters" to build images in the corresponding architectures and deploy them later on with ArgoCD via a GitOps repository that is also being created by the script.
 - [Red Hat Advanced Cluster Management](https://www.redhat.com/en/technologies/management/advanced-cluster-management) managing the workload clusters with the [Submariner add-on](https://submariner.io) installed on them to enable inter-cluster communication.
+- ArgoCD configured to deploy on the workload clusters : 
+  - Login to your master ArgoCD using the `argocd login <ARGOCD_HOST> --username <USERNAME> --password <PASSWORD>` command.
+  - Add each cluster using the `argocd cluster add <CLUSTER_CONTEXT> --name <CLUSTER_NAME>`. You can find the context of each cluster using the `oc config current-context` command after logging in.  
+    You can set the `<CLUSTER_NAME>` placeholder to whatever name you want, just note that these names are used to set destinations to place services.
 
 ## Customizable variables :
 
